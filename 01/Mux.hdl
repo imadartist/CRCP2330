@@ -14,15 +14,10 @@ CHIP Mux {
     OUT out;
 
     PARTS:
-    NOT(in=a, out=nota);
-    NOT(in=b, out=notb);
-    NOT(in=sel, out=notsel);
-    AND(a=nota, b=b, sel=sel, out=w1);
-    AND(a=a, b=notb, sel=notsel, out=w2);
-    AND(a=a, b=b, sel=notsel, out=w3);
-    AND(a=a, b=b, sel=sel, out=w4);
-    OR(a=w1, b=w2, out=z1);
-    OR(a=w3, b=w4, out=z2);
-    OR(a=z1, b=z2, out=out);
+
+    Not(in=sel, out=notsel);
+   	And(a=a, b=notsel, out=w1);
+   	And(a=b, b=sel, out=w2);
+    Or(a=w1, b=w2, out=out);
 
 }

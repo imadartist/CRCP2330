@@ -13,8 +13,7 @@ CHIP FullAdder {
         carry;   // Left bit of a + b + c
 
     PARTS:
-    HalfAdder(a=a, b=b, out=ab);
-    HalfAdder(a=ab, b=c, out=sum);
-    And(a=sum)
-    //Other Simple Gate
+    HalfAdder(a=a, b=b, sum=abLSB, carry=abMSB);
+    HalfAdder(a=c, b=abLSB, sum=sum, carry=abcMSB);
+    And(a=abMSB, b=abcMSB, out=out);
 }

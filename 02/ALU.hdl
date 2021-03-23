@@ -51,9 +51,9 @@ CHIP ALU {
    Not16(in=zeroy, out=noty); //!y
    Mux16(a=zeroy, b=noty, sel=ny, out=finaly); if (ny == 1) set y = !y  
 
-   Add16(a=, b=, out=);
-   And16(a=, b=, out=,);
-   Mux16(a=finalx, b= IDK, sel=f, out= IDK);
+   Add16(a=finalx, b=finaly, out=addX); //x + y
+   And16(a=finalx, b=finaly, out=andX); //x & y 
+   Mux16(a=addX, b=andX, sel=f, out= IDK); // if (f == 1)  set out = x + y OR if (f == 0)  set out = x & y 
 
 
 

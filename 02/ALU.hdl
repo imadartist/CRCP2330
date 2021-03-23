@@ -47,4 +47,10 @@ CHIP ALU {
    Not16(in=zerox, out=notx); 
    Mux16(a=zerox, b=notx, sel=nx, out=finalx);
 
+   Mux16(a=y, b=0, sel=zy, out=zeroy);
+   Not16(in=zeroy, out=noty);
+   Mux16(a=zeroy, b=noty, sel=ny, out=finaly);
+
+
+
 }

@@ -58,11 +58,11 @@ CHIP ALU {
    Not16(in= addOrAnd, out= notAddOrAnd); //if (no == 1) 
    Mux16(a=addOrAnd, b=notAddOrAnd, sel=no, out=notOut); //out = !out
 
-   Mux16(); // if (out == 0) set zr = 1
-   Not16(); //0 otherwise
+   Not16(in=notOut, out=o); // if (out == 0) 
+   Not16(in=o, out=zr); //set zr = 1, 0 otherwise
 
-   And16(); //if (out < 0) set ng = 1
-   Not16(); //0 otherwise
+   And16(a[0...15]=true, b=notOut, out[15]=ng); //if (out < 0) set ng = 1
+   Or16(a=notOut,b[0...15]=false,out=out); //0 otherwise
 
 
 }
